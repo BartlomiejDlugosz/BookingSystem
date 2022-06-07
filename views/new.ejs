@@ -1,0 +1,101 @@
+<% layout("boilerplate") %>
+    <form action="/bookings" method="POST" class="mb-3 needs-validation" novalidate>
+        <div>
+            <label for="room" class="form-label">Room:</label>
+            <select name="room" id="room" class="form-select" required>
+                <option value="B101" selected>B101</option>
+                <option value="B102">B102</option>
+            </select>
+        </div>
+        <div>
+            <label for="teacher" class="form-label">Teacher:</label>
+            <input type="text" name="teacher" id="teacher" class="form-control" required>
+            <div class="invalid-feedback">
+                Please enter the teacher's name.
+            </div>
+        </div>
+        <div class="my-3">
+            <div class="row my-3">
+                <label for="date" class="col-form-label col-sm-2">Date:</label>
+                <div class="col-sm-4">
+                    <input type="datetime-local" name="date" id="date" class="form-control" required>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary">Search</button>
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a date for the booking.
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="card text-center col">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            08:50
+                        </h4>
+                        <div class="card-subtitle text-muted my-2">
+                            Available
+                        </div>
+                        <div class="card-link">
+                            <button class="btn btn-primary">Book</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center col">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            10:40
+                        </h4>
+                        <div class="card-subtitle text-muted my-2">
+                            Available
+                        </div>
+                        <div class="card-link">
+                            <button class="btn btn-primary">Book</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center col">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            13:00
+                        </h4>
+                        <div class="card-subtitle text-muted my-2">
+                            Available
+                        </div>
+                        <div class="card-link">
+                            <button class="btn btn-primary">Book</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-center col">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            14:40
+                        </h4>
+                        <div class="card-subtitle text-muted my-2">
+                            Available
+                        </div>
+                        <div class="card-link">
+                            <button class="btn btn-primary">Book</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+            <div class="invalid-feedback">
+                Please enter the password.
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3">Create Booking</button>
+    </form>
+
+    <a href="/bookings" class="btn btn-secondary">Return to Bookings</a>

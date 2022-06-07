@@ -1,0 +1,41 @@
+<% layout("boilerplate") %>
+    <h1 class="mb-3">Bookings</h1>
+    <% if (typeof status !=="undefined" ) { %>
+        <div class="alert alert-<%= type %>">
+            <%= status %>
+        </div>
+        <% } %>
+            <div class="row">
+                <form action="/bookings" method="GET" class="needs-validation mb-3 col-lg-9" novalidate>
+                    <div class="container">
+                        <div class="row">
+                            <label for="filter" class="col-form-label col-lg-4">Filter by date:</label>
+                            <div class="col-lg-6 mb-3 mb-lg-0">
+                                <input type="date" name="filter" id="filter" class="form-control" value="<%= filter %>"
+                                    required>
+                            </div>
+                            <button class="btn btn-info col-lg-2" type="submit">Filter</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="/bookings" method="GET" class="col-lg-3 mb-3">
+                    <button class="btn btn-danger col-12" type="submit">Remove Filter</button>
+                </form>
+            </div>
+            <% if (bookings.length===0) { %>
+                <div class="alert alert-danger">No bookings available!</div>
+                <% } else { %>
+                    <ul class="list-group mb-3">
+                        <% for (let booking of bookings) { %>
+                            <li
+                                class="list-group-item d-flex align-items-center justify-content-between flex-column flex-md-row">
+                                <span class="mb-3 mb-md-0">
+                                    <%= booking.room %> - <%= booking.date.toLocaleString("en-UK") %>
+                                </span>
+                                <a href="/bookings/<%= booking._id %>" class="btn btn-primary">Details</a>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <% } %>
+
+                        <a href="/bookings/new" class="btn btn-primary">New Booking</a>
