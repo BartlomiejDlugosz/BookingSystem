@@ -21,7 +21,7 @@
                     <input type="datetime-local" name="date" id="date" class="form-control" required>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary">Search</button>
+                    <button type="button" class="btn btn-primary" id="searchDate">Search</button>
                 </div>
                 <div class="invalid-feedback">
                     Please choose a date for the booking.
@@ -39,7 +39,7 @@
                             Available
                         </div>
                         <div class="card-link">
-                            <button class="btn btn-primary">Book</button>
+                            <button class="btn btn-primary bookBtn" id="8:50">Book</button>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             Available
                         </div>
                         <div class="card-link">
-                            <button class="btn btn-primary">Book</button>
+                            <button class="btn btn-primary bookBtn" id="10:40">Book</button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                             Available
                         </div>
                         <div class="card-link">
-                            <button class="btn btn-primary">Book</button>
+                            <button class="btn btn-primary bookBtn" id="13:00">Book</button>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                             Available
                         </div>
                         <div class="card-link">
-                            <button class="btn btn-primary">Book</button>
+                            <button class="btn btn-primary bookBtn" id="14:40">Book</button>
                         </div>
                     </div>
                 </div>
@@ -99,3 +99,5 @@
     </form>
 
     <a href="/bookings" class="btn btn-secondary">Return to Bookings</a>
+
+    <script src="/js/newBooking.js"></script>

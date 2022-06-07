@@ -93,7 +93,7 @@ app.delete("/bookings/:id", asyncError(async (req, res) => {
     if (password === "1234") {
         const booking = await Booking.findById(id)
         if (!booking) {
-            throw new ExpressError("Not found booking!", 500)
+            throw new ExpressError("Not found booking!", 400)
         }
         await booking.delete()
         res.redirect(`/bookings?type=${"success"}&status=${"Booking Deleted!"}`)
@@ -101,6 +101,27 @@ app.delete("/bookings/:id", asyncError(async (req, res) => {
         res.redirect(`/bookings?type=${"danger"}&status=${"Incorrect Password!"}`)
     }
 
+}))
+
+app.get("/availableBookings", asyncError(async (req, res) => {
+    const {date} = req.query
+    if (!date) {
+        throw new ExpressError("Please provide a date", 400)
+    }
+    let dateToSearch = new Date(date)
+    let nextDate = new Date(dateToSearch.getTime())
+    nextDate.setDate(nextDate.getDate() + 1)
+
+    const times = await Booking.find({ date: { $gte: dateToSearch, $lt: nextDate } }).sort({ date: 1 })
+    const available = {"8:50": true, "10:40": true, "13:00": true, "14:40": true}
+    for (let time of times) {
+        for (let key in available) {
+            if (`${time.getHours()}:${time.getMinutes()}` === key) {
+                available[key] = false
+            }
+        }
+    }
+    res.send(available)
 }))
 
 app.use((err, req, res, next) => {
